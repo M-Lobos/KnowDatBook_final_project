@@ -2,6 +2,9 @@
     <string name="app_name">KnowDatBook</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Explorar Géneros</string>
+    <string name="second_fragment_label">Acotar Intereses</string>
+
 
     <!-- titulos -->
     <string name="interest_title">ACOTAR INTERESES</string>

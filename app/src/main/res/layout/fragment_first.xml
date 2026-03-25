@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.FirstFragment"
+    tools:context=".view.genre.FirstFragment"
     android:background="@color/colorBackground"
     >
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvZooAnimal"
+        android:id="@+id/rvGenres"
         android:layout_width="371dp"
         android:layout_height="670dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,6 +18,6 @@
         app:layout_constraintVertical_bias="0.207"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
-        tools:listitem="@layout/gender_item" />
+        tools:listitem="@layout/genre_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

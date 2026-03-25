@@ -7,22 +7,40 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.lobosmanuel.knowdatbook.view.FirstFragment"
+        android:name="com.lobosmanuel.knowdatbook.view.genre.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_UserSectionFragment"
+            app:destination="@id/userSectionFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.lobosmanuel.knowdatbook.view.SecondFragment"
+        android:name="com.lobosmanuel.knowdatbook.view.book.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_userSectionFragment"
+            app:destination="@id/userSectionFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/userSectionFragment"
+        android:name="com.lobosmanuel.knowdatbook.view.user.UserSectionFragment"
+        android:label="Mis sugeridos"
+        tools:layout="@layout/fragment_user_section" >
+        <action
+            android:id="@+id/action_userSectionFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+
 </navigation>
