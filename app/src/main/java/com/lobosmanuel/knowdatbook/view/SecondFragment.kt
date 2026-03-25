@@ -1,4 +1,4 @@
-package com.lobosmanuel.knowdatbook
+package com.lobosmanuel.knowdatbook.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.lobosmanuel.knowdatbook.R
 import com.lobosmanuel.knowdatbook.databinding.FragmentSecondBinding
 
 /**

@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorBackground">#F0F4F4</color>
+
+    <color name="primaryColor">#6D1A1A</color>
+    <color name="darkPrimaryColor">#4A0E0E</color>
+
+    <color name="contrastColor">#004D40</color>
+    <color name="iconColor">#D4AF37</color>
+
+    <color name="colorCardStroke">#E2DED0</color>
+
 </resources>
