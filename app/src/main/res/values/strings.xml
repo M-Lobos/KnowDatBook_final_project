@@ -4,6 +4,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Explorar Géneros</string>
     <string name="second_fragment_label">Acotar Intereses</string>
+    <string name="second_fragment_instruction">Puedes filtrar por fecha o autor</string>
 
 
     <!-- titulos -->

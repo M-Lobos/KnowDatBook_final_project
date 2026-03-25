@@ -36,11 +36,19 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/darkPrimaryColor"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/second_fragment_instruction"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/darkPrimaryColor"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/century_title"
+                    android:textColor="@color/black"
                     android:layout_marginTop="12dp"
                     android:textStyle="bold"/>
 
@@ -52,16 +60,19 @@
                     <RadioButton
                         android:id="@+id/rb1800"
                         android:text="1800 - 1899"
+                        android:textColor="@color/black"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"                        />
                     <RadioButton
                         android:id="@+id/rb1900"
                         android:text="1900 - 1999"
+                        android:textColor="@color/black"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"/>
                     <RadioButton
                         android:id="@+id/rb2000"
                         android:text="2000+"
+                        android:textColor="@color/black"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"/>
                 </RadioGroup>
@@ -74,6 +85,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etAutor"
                         android:layout_width="match_parent"
+                        android:textColor="@color/darkPrimaryColor"
                         android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
