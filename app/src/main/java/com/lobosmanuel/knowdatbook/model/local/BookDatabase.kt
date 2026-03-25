@@ -15,13 +15,16 @@ abstract class BookDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: BookDatabase? = null
 
+        // En tu Database class
         fun getDatabase(context: Context): BookDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     BookDatabase::class.java,
-                    "book_database" // Nombre del archivo de la DB
-                ).build()
+                    "book_database"
+                )
+                    .fallbackToDestructiveMigration() // <--- ESTO EVITA QUE SE ROMPA
+                    .build()
                 INSTANCE = instance
                 instance
             }

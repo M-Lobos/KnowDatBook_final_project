@@ -5,15 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lobosmanuel.knowdatbook.databinding.FragmentUserSectionBinding
-import com.lobosmanuel.knowdatbook.model.local.Genre
-import com.lobosmanuel.knowdatbook.view.genre.GenreAdapter
+import com.lobosmanuel.knowdatbook.view.book.BookViewModel
 
 class UserSectionFragment : Fragment() {
 
     private var _binding: FragmentUserSectionBinding? = null
     private val binding get() = _binding!!
+
+    // Compartimos el mismo ViewModel
+    private val viewModel: BookViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,22 +29,33 @@ class UserSectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 1. Configurar el LayoutManager (Lista vertical)
-        binding.rvUserSectionFragment.layoutManager = LinearLayoutManager(context)
+        // Inicializar el Adapter con las lambdas para borrar y calificar
 
-        // 2. Crear datos de prueba (Mock data)
-//        val librosFavoritos = listOf(
-//            Book("El Aleph", "Jorge Luis Borges"),
-//            Book("Demian", "Hermann Hesse"),
-//            Book("La tregua", "Mario Benedetti")
-//        )
+        val adapter = UserSectionAdapter(
+            onDeleteClick = { book -> viewModel.deleteFavorite(book) },
+            onRatingChanged = { book, newRating ->
+                // 1. Creamos una copia del libro con el nuevo puntaje
+                // 2. Cambia isRead a 'true' automáticamente
+                val updatedBook = book.copy(
+                    rating = newRating,
+                    isRead = true
+                )
 
+                // 3. Actualizamos en Room
+                viewModel.insertFavorite(updatedBook)
 
+                // Opcional: Toast informativo
+                // Toast.makeText(requireContext(), "¡Libro marcado como leído!", Toast.LENGTH_SHORT).show()
+            }
+        )
 
-        // 3. Asignar el adaptador
-        // (Asumiendo que reusarás el GenreAdapter o crearás uno similar para libros)
-//        val adapter = GenreAdapter(librosFavoritos)
-//        binding.rvUserSectionFragment.adapter = adapter
+        binding.rvUserSectionFragment.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvUserSectionFragment.adapter = adapter
+
+        // OBSERVAR LA DB: Aquí ocurre la magia
+        viewModel.allFavorites.observe(viewLifecycleOwner) { listaDeLibros ->
+            adapter.setBooks(listaDeLibros)
+        }
     }
 
     override fun onDestroyView() {

@@ -12,8 +12,11 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "fav_books_table")
 data class BookEntity(
     @PrimaryKey
-    @SerializedName("key") val id: String, // Usamos la 'key' de OpenLibrary como PK
-    @SerializedName("title") val title: String,
-    @SerializedName("author_name") val authorName: String?, // Guardamos el primer autor
-    @SerializedName("cover_i") val coverId: Int?
+    val id: String,
+    val title: String,
+    val authorName: String?,
+    val coverId: Int?,
+    // Campos nuevos para que el ciclo funcione:
+    val rating: Float = 0f,
+    val isRead: Boolean = false
 )

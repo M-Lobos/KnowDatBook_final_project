@@ -2,11 +2,12 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="2dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
     app:strokeColor="@color/colorCardStroke"
     app:strokeWidth="1dp">
 
@@ -18,22 +19,26 @@
 
         <ImageView
             android:id="@+id/imgBookThumb"
-            android:layout_width="60dp"
-            android:layout_height="90dp"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
             android:scaleType="centerCrop"
             android:background="@color/colorCardStroke"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@drawable/ic_launcher_foreground" />
 
         <TextView
             android:id="@+id/txtBookTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
             android:text="Título del Libro"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@color/iconColor"
-            app:layout_constraintEnd_toStartOf="@+id/chipStatus"
+            app:layout_constraintEnd_toStartOf="@+id/btnDelete"
             app:layout_constraintStart_toEndOf="@id/imgBookThumb"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,51 +48,58 @@
             android:layout_height="wrap_content"
             android:text="Autor"
             android:textColor="@color/iconColor"
-            android:textSize="13sp"
+            android:textSize="14sp"
+            android:alpha="0.8"
             app:layout_constraintEnd_toEndOf="@id/txtBookTitle"
             app:layout_constraintStart_toStartOf="@id/txtBookTitle"
             app:layout_constraintTop_toBottomOf="@id/txtBookTitle" />
+
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Eliminar libro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_delete"
+            app:tint="@color/white" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
             android:text="No leído"
+            android:textColor="@color/primaryColor"
             android:textSize="10sp"
+            app:chipBackgroundColor="@color/white"
             app:chipMinHeight="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <RadioGroup
-            android:id="@+id/rgRating"
+        <RatingBar
+            android:id="@+id/rbStars"
+            style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginStart="24dp"
+            android:numStars="5"
+            android:progressBackgroundTint="@color/white"
+            android:progressTint="@color/iconColor"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:stepSize="1.0"
+            android:isIndicator="false"
+            android:focusable="true"
+            android:clickable="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtBookAuthor">
-
-            <RadioButton
-                android:id="@+id/rbBad"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:button="@null"
-                android:background="@drawable/ic_sad_face"
-                android:backgroundTint="@color/iconColor" /> <RadioButton
-            android:id="@+id/rbNeutral"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="8dp"
-            android:button="@null"
-            android:background="@drawable/ic_neutral_face"
-            android:backgroundTint="@color/iconColor" /> <RadioButton
-            android:id="@+id/rbGood"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="8dp"
-            android:button="@null"
-            android:background="@drawable/ic_happy_face"
-            android:backgroundTint="@color/iconColor" /> </RadioGroup>
+            app:layout_constraintStart_toStartOf="@id/txtBookTitle"
+            app:layout_constraintTop_toBottomOf="@id/txtBookAuthor"
+            app:layout_constraintVertical_bias="0.545" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

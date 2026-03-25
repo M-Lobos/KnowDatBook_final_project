@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.lobosmanuel.knowdatbook.R
 import com.lobosmanuel.knowdatbook.databinding.FragmentSecondBinding
+import com.lobosmanuel.knowdatbook.model.local.BookEntity
 
 /**
  * A simple [androidx.fragment.app.Fragment] subclass as the second destination in the navigation.
@@ -91,6 +92,33 @@ class SecondFragment : Fragment() {
                 // Esto se disparará si la lista de la API llegó vacía
                 Toast.makeText(requireContext(), "No hay resultados para esta búsqueda", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.btnGuardar.setOnClickListener {
+            val currentBook = viewModel.bookFromInternet.value
+
+            if (currentBook != null) {
+                val favoriteBook = BookEntity(
+                    id = currentBook.key,
+                    title = currentBook.title,
+                    // Tomamos el primer autor si existe, sino "Desconocido"
+                    authorName = currentBook.authorNames?.firstOrNull() ?: "Autor Desconocido",
+                    coverId = currentBook.coverId,
+                    rating = 0f,    // Atributo nuevo para las estrellas
+                    isRead = false  // Atributo nuevo para el chip
+                )
+
+                // USAMOS TU FUNCIÓN:
+                viewModel.insertFavorite(favoriteBook)
+
+                Toast.makeText(requireContext(), "¡${currentBook.title} guardado!", Toast.LENGTH_SHORT).show()
+                binding.cardResultado.visibility = View.GONE
+            }
+        }
+
+        binding.fabToLibrary.setOnClickListener {
+
+            findNavController().navigate(R.id.action_SecondFragment_to_userSectionFragment)
         }
     }
 
