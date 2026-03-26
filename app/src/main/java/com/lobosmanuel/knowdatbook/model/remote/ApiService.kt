@@ -10,6 +10,6 @@ interface ApiService {
     @GET("search.json")
     suspend fun searchBooks(
         @Query("q") query: String,
-        @Query("limit") limit: Int = 10 // Traemos pocos para que sea rápido
+        @Query("limit") limit: Int = 100 // Traemos pocos para que sea rápido
     ): Response<OpenLibraryResponse>
 }
