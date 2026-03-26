@@ -22,4 +22,8 @@ interface BookDao {
     // Limpiar toda la tabla (útil para pruebas)
     @Query("DELETE FROM fav_books_table")
     suspend fun deleteAll()
+
+    //bypass para el testing de room (single shot func)
+    @Query("SELECT * FROM fav_books_table WHERE isRead = false")
+    suspend fun getAllFavoritesSync(): List<BookEntity>
 }
