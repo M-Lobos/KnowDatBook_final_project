@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@color/colorBackground">
 
@@ -18,9 +18,25 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvUserSectionFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:padding="8dp"
         android:clipToPadding="false"
         tools:listitem="@layout/book_item"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSugerirLibro"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="@color/iconColor"
+        android:text="¡Sugiéreme un libro!"
+        android:textColor="@color/primaryColor"
+        app:icon="@android:drawable/ic_dialog_email"
+        app:iconTint="@color/primaryColor" />
 
 </LinearLayout>
